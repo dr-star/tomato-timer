@@ -1,0 +1,44 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <i class="bi-x" (click)="modal.dismiss()">
+    </i>
+  </div>
+  <div class="modal-body">
+
+    <form [formGroup]="settings">
+      <div class="form-group">
+
+
+        <div formGroupName="timers">
+          <h3>Timers</h3>
+
+          <div class="input-group mb-3">
+            <label>
+              Tomato:
+              <input type="text" class="form-control" placeholder="25" aria-label="Tomato" formControlName="tomato">
+            </label>
+
+            <label>
+              Short break:
+              <input type="text" class="form-control" placeholder="5" aria-label="Tomato" formControlName="shortBreak">
+            </label>
+
+            <label>
+              Long break:
+              <input type="text" class="form-control" placeholder="10" aria-label="Tomato" formControlName="longBreak">
+            </label>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" [disabled]="settings.invalid" (click)="save(); modal.dismiss()">Save</button>
+  </div>
+</ng-template>
+
+<a class="bi-gear" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="open(content)"></a>

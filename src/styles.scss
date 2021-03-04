@@ -1,10 +1,9 @@
 // Option 1
 //
 // Import all of Bootstrap's CSS
-
-@import "bootstrap/scss/bootstrap";
-@import "bootstrap-icons/font/bootstrap-icons.css";
-
+@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+//
 // Option 2
 //
 // Import just the styles you need. Note that some stylesheets are required no matter what.
