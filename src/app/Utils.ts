@@ -1,7 +1,13 @@
-import {LONG_BREAK_DURATION, SHORT_BREAK_DURATION, Timer, TOMATO_DURATION} from './Timer';
+import {Timer} from './Timer';
+import {Setting} from './Setting';
 
 export function retrieveTimersFromSessionStorage(): Timer {
-  const timer = (JSON.parse(sessionStorage.getItem('timers')) as Timer);
+  return retrieveSettingsFromSessionStorage().timer;
+}
 
-  return timer === null ? new Timer(TOMATO_DURATION, SHORT_BREAK_DURATION, LONG_BREAK_DURATION) : timer ;
+export function retrieveSettingsFromSessionStorage(): Setting {
+  const settings = (JSON.parse(sessionStorage.getItem('settings')) as Setting);
+
+  return settings === null ?
+    new Setting() : settings;
 }

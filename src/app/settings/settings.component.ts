@@ -1,9 +1,11 @@
 import {Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
-import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LONG_BREAK_DURATION, SHORT_BREAK_DURATION, Timer, TOMATO_DURATION} from '../Timer';
+import {Timer} from '../Timer';
 import * as timers from 'src/app/Timer';
-import {retrieveTimersFromSessionStorage} from '../Utils';
+import {retrieveSettingsFromSessionStorage} from '../Utils';
+import {Setting} from '../Setting';
+
 
 @Component({
   selector: 'app-settings',
@@ -19,18 +21,20 @@ export class SettingsComponent implements OnInit {
   public settings: FormGroup;
 
   ngOnInit(): void {
-    const savedTimers = retrieveTimersFromSessionStorage();
+    const settings = retrieveSettingsFromSessionStorage();
+    const timerSettings = settings.timer;
     this.settings = this.fb.group({
+      showTimerInTitle: settings.showTimerInTitle,
       timers: this.fb.group({
-        tomato: [savedTimers.tomato, [Validators.required, Validators.min(1), Validators.max(59)]],
-        shortBreak: [savedTimers.shortBreak, [Validators.required, Validators.min(1), Validators.max(59)]],
-        longBreak: [savedTimers.longBreak, [Validators.required, Validators.min(1), Validators.max(59)]],
+        tomato: [timerSettings.tomato, [Validators.required, Validators.min(1), Validators.max(59)]],
+        shortBreak: [timerSettings.shortBreak, [Validators.required, Validators.min(1), Validators.max(59)]],
+        longBreak: [timerSettings.longBreak, [Validators.required, Validators.min(1), Validators.max(59)]],
       })
     });
   }
 
   public open(content): void {
-    this.modalService.open(content, {size: 'lg'}).result.then();
+    this.modalService.open(content, {size: 'lg', backdrop: 'static'}).result.then();
   }
 
   public save(): void {
@@ -39,7 +43,11 @@ export class SettingsComponent implements OnInit {
       const timersForm = this.settings.get('timers');
       const timer = new Timer(+timersForm.get('tomato').value, +timersForm.get('shortBreak').value, +timersForm.get('longBreak').value);
 
-      sessionStorage.setItem('timers', JSON.stringify(timer));
+      const settings = new Setting();
+      settings.timer = timer;
+      settings.showTimerInTitle = this.settings.get('showTimerInTitle').value;
+
+      sessionStorage.setItem('settings', JSON.stringify(settings));
       this.timerDurationChanged.emit();
     }
   }

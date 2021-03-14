@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {interval, Subscription} from 'rxjs';
-import {retrieveTimersFromSessionStorage} from '../Utils';
+import {retrieveSettingsFromSessionStorage, retrieveTimersFromSessionStorage} from '../Utils';
 import {TimerType} from '../TimerType';
+import {Title} from '@angular/platform-browser';
 
-const ONE_SECOND = 1;
+const ONE_SECOND = 1000;
+const DEFAULT_TITLE = 'Tomato Timer';
 
 @Component({
   selector: 'app-timer',
@@ -17,7 +19,7 @@ export class TimerComponent implements OnInit {
   public disableStopButton: boolean;
   private selectedTimerType = TimerType.TOMATO;
 
-  constructor() {
+  constructor(private titleService: Title) {
   }
 
   public ngOnInit(): void {
@@ -28,6 +30,10 @@ export class TimerComponent implements OnInit {
     this.disableStartButton = true;
     this.disableStopButton = false;
     this.subscription = interval(ONE_SECOND).subscribe(n => {
+      if (retrieveSettingsFromSessionStorage().showTimerInTitle) {
+        this.titleService.setTitle('(' + this.remainingTime.getMinutes() + ':' + this.remainingTime.getSeconds() + ') ' + DEFAULT_TITLE);
+      }
+
       this.remainingTime.setSeconds(this.remainingTime.getSeconds() - 1);
       this.remainingTime = new Date(this.remainingTime.getTime());
 
@@ -57,6 +63,7 @@ export class TimerComponent implements OnInit {
     this.disableStopButton = false;
 
     this.remainingTime = this.calculateTimeDifference();
+    this.titleService.setTitle(DEFAULT_TITLE);
   }
 
   private calculateDateToReach(): Date {

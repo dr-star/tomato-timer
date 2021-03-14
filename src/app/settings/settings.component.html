@@ -1,15 +1,25 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h2 class="modal-title" id="modal-basic-title">Options</h2>
     <i class="bi-x" (click)="modal.dismiss()">
     </i>
   </div>
   <div class="modal-body">
 
     <form [formGroup]="settings">
+
       <div class="form-group">
+          <h3>Preference</h3>
 
+          <div class="input-group mb-3">
+            <label>
+              <input type="checkbox" aria-label="Tomato" formControlName="showTimerInTitle">
+              Show timer in page title:
+            </label>
+          </div>
+      </div>
 
+      <div class="form-group">
         <div formGroupName="timers">
           <h3>Timers</h3>
 
@@ -29,8 +39,6 @@
               <input type="text" class="form-control" placeholder="10" aria-label="Tomato" formControlName="longBreak">
             </label>
           </div>
-
-
         </div>
       </div>
     </form>
