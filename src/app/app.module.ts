@@ -9,13 +9,15 @@ import { SettingsComponent } from './settings/settings.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TimerComponent } from './timer/timer.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SettingsComponent,
-    TimerComponent
+    TimerComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,

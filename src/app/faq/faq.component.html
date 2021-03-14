@@ -1,0 +1,27 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Tomato Timer</h2>
+    <i class="bi-x" (click)="modal.dismiss()">
+    </i>
+  </div>
+  <div class="modal-body">
+
+    <strong>Q. What is Pomodoro Technique?</strong>
+    <label>A. The time management technique created by Francesco Cirillo for a more productive way to work and study.</label>
+
+    <strong>Q. Can you tell me the story without having to visit the website?</strong>
+    <label>A. Well, it comprises of the following basic steps:</label>
+    <ul>
+      <li>Decide on the task at hand</li>
+      <li>Set the Pomodoro (timer) to 25 minutes</li>
+      <li>Work on the task until the timer expires; Record with an X</li>
+      <li>Take a Short Break (5 minutes)</li>
+      <li>Every four "pomodoros", take a Long Break (10 minutes)</li>
+    </ul>
+
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template>
+
+<a class="bi-question-circle ml-3" data-bs-toggle="modal" (click)="open(content)"></a>
