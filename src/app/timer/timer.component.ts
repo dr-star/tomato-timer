@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {interval, Subscription} from 'rxjs';
-import {retrieveSettingsFromSessionStorage, retrieveTimersFromSessionStorage} from '../Utils';
+import {retrieveSettingsFromLocalStorage, retrieveTimersFromLocalStorage} from '../Utils';
 import {TimerType} from '../TimerType';
 import {Title} from '@angular/platform-browser';
+import {Record} from '../Record';
 
 const ONE_SECOND = 1000;
 const DEFAULT_TITLE = 'Tomato Timer';
@@ -30,7 +31,7 @@ export class TimerComponent implements OnInit {
     this.disableStartButton = true;
     this.disableStopButton = false;
     this.subscription = interval(ONE_SECOND).subscribe(n => {
-      if (retrieveSettingsFromSessionStorage().showTimerInTitle) {
+      if (retrieveSettingsFromLocalStorage().showTimerInTitle) {
         this.titleService.setTitle('(' + this.remainingTime.getMinutes() + ':' + this.remainingTime.getSeconds() + ') ' + DEFAULT_TITLE);
       }
 
@@ -41,8 +42,16 @@ export class TimerComponent implements OnInit {
         this.disableStopButton = true;
         this.subscription.unsubscribe();
         this.playAudio();
+        this.addNewRecord();
       }
     });
+  }
+
+  private addNewRecord(): void {
+    const record: Record = new Record(new Date(), this.selectedTimerType);
+    const records: Record[] = (JSON.parse(localStorage.getItem('logs')) as Record[]) || [];
+    records.push(record);
+    localStorage.setItem('logs', JSON.stringify(records));
   }
 
   private playAudio(): void {
@@ -93,7 +102,7 @@ export class TimerComponent implements OnInit {
   }
 
   private getSelectedDuration(timerType: TimerType): number {
-    const timer = retrieveTimersFromSessionStorage();
+    const timer = retrieveTimersFromLocalStorage();
     let result: number;
     switch (timerType) {
       case TimerType.TOMATO:

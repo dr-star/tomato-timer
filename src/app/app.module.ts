@@ -10,6 +10,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TimerComponent } from './timer/timer.component';
 import { FaqComponent } from './faq/faq.component';
+import { RecordHistoryComponent } from './record-history/record-history.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FaqComponent } from './faq/faq.component';
     HeaderComponent,
     SettingsComponent,
     TimerComponent,
-    FaqComponent
+    FaqComponent,
+    RecordHistoryComponent
   ],
   imports: [
     BrowserModule,

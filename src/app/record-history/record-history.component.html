@@ -1,0 +1,33 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Records</h2>
+    <i class="bi-x" (click)="modal.dismiss()">
+    </i>
+  </div>
+  <div class="modal-body">
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Type</th>
+        <th scope="col" sortable="endDate">End date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let record of records; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ getTimerName(record.timerType) }}
+        </td>
+        <td>{{ record.endDate | date:'long' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="deleteAllRecords()">Clear records</button>
+  </div>
+</ng-template>
+
+<a class="bi-clock-history ml-3" data-bs-toggle="modal" (click)="open(content)"></a>

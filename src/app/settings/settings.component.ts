@@ -3,7 +3,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Timer} from '../Timer';
 import * as timers from 'src/app/Timer';
-import {retrieveSettingsFromSessionStorage} from '../Utils';
+import {retrieveSettingsFromLocalStorage} from '../Utils';
 import {Setting} from '../Setting';
 
 
@@ -21,7 +21,7 @@ export class SettingsComponent implements OnInit {
   public settings: FormGroup;
 
   ngOnInit(): void {
-    const settings = retrieveSettingsFromSessionStorage();
+    const settings = retrieveSettingsFromLocalStorage();
     const timerSettings = settings.timer;
     this.settings = this.fb.group({
       showTimerInTitle: settings.showTimerInTitle,
@@ -47,7 +47,7 @@ export class SettingsComponent implements OnInit {
       settings.timer = timer;
       settings.showTimerInTitle = this.settings.get('showTimerInTitle').value;
 
-      sessionStorage.setItem('settings', JSON.stringify(settings));
+      localStorage.setItem('settings', JSON.stringify(settings));
       this.timerDurationChanged.emit();
     }
   }
