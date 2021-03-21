@@ -1,15 +1,16 @@
-
 <div class="d-flex bd-highlight">
   <button class="btn btn-primary flex-fill bd-highlight" type="button" (click)="selectTomato()">Tomato</button>
-  <button class="btn btn-primary flex-fill bd-highlight" type="button" (click)="selectShortBreak()">Short break</button>
+  <button class="btn btn-primary flex-fill bd-highlight" type="button" (click)="selectShortBreak()">Short break
+  </button>
   <button class="btn btn-primary flex-fill bd-highlight" type="button" (click)="selectLongBreak()">Long break</button>
 </div>
 
 <h1 class="mt-5 text-center fs-1 fw-bold">{{remainingTime | date: "m:ss"}}</h1>
 
-
-<div class="d-flex bd-highlight justify-content-center mt-5">
-  <button type="button" class="btn btn-outline-success" (click)="start()" [disabled]="disableStartButton">Start</button>
-  <button type="button" class="btn btn-outline-danger" (click)="pause()" [disabled]="disableStopButton">Stop</button>
-  <button type="button" class="btn btn-outline-dark" (click)="reset()">Reset</button>
+<div id="buttons-container" class="d-flex bd-highlight justify-content-center mt-5">
+  <button type="button" class="btn btn-outline-success mr-3" (click)="start()" [disabled]="disableStartButton">Start
+  </button>
+  <button id="middle-button" type="button" class="btn btn-outline-danger mr-3" (click)="pause()" [disabled]="disableStopButton">Stop
+  </button>
+  <button type="button" class="btn btn-outline-dark mr-3" (click)="reset()">Reset</button>
 </div>

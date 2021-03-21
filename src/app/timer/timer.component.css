@@ -1,0 +1,10 @@
+@media (max-width: 576px) {
+  #buttons-container {
+    flex-direction: column;
+  }
+
+  #middle-button {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
