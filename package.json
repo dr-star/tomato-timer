@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "http-server": "http-server -p 8080 -c-1 dist/tomato-timer",
+    "build-locale": "npm run build && npm run http-server",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -7,13 +7,9 @@ import {TimerComponent} from './timer/timer.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   @ViewChild(TimerComponent) timer: TimerComponent;
   title = 'tomato-timer';
-
-  public ngOnInit(): void {
-  }
-
 
   public resetTimer(): void {
     this.timer.reset();

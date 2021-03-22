@@ -4,6 +4,7 @@ import {retrieveSettingsFromLocalStorage, retrieveTimersFromLocalStorage} from '
 import {TimerType} from '../TimerType';
 import {Title} from '@angular/platform-browser';
 import {Record} from '../Record';
+import {NotificationService} from '../notification.service';
 
 const ONE_SECOND = 1000;
 const DEFAULT_TITLE = 'Tomato Timer';
@@ -20,7 +21,8 @@ export class TimerComponent implements OnInit {
   public disableStopButton: boolean;
   private selectedTimerType = TimerType.TOMATO;
 
-  constructor(private titleService: Title) {
+  constructor(private titleService: Title,
+              private notificationService: NotificationService) {
   }
 
   public ngOnInit(): void {
@@ -43,6 +45,7 @@ export class TimerComponent implements OnInit {
         this.subscription.unsubscribe();
         this.playAudio();
         this.addNewRecord();
+        this.notificationService.sendNotification('No more time', {body: 'Ehi! The timer is over!'});
       }
     });
   }
