@@ -5,7 +5,7 @@ import {Timer} from '../Timer';
 import * as timers from 'src/app/Timer';
 import {retrieveSettingsFromLocalStorage} from '../Utils';
 import {Setting} from '../Setting';
-
+import { version } from '../../../package.json';
 
 @Component({
   selector: 'app-settings',
@@ -14,6 +14,8 @@ import {Setting} from '../Setting';
 })
 export class SettingsComponent implements OnInit {
   @Output() timerDurationChanged = new EventEmitter<void>();
+
+  public version: string = version;
 
   constructor(private modalService: NgbModal, private fb: FormBuilder) {
   }
