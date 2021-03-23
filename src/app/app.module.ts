@@ -21,12 +21,13 @@ import { RecordHistoryComponent } from './record-history/record-history.componen
     FaqComponent,
     RecordHistoryComponent
   ],
-  imports: [
-    BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgbModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        NgbModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

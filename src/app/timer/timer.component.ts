@@ -19,14 +19,14 @@ export class TimerComponent implements OnInit {
   private subscription = new Subscription();
   public disableStartButton: boolean;
   public disableStopButton: boolean;
-  private selectedTimerType = TimerType.TOMATO;
+  public selectedTimerType = TimerType.TOMATO;
 
   constructor(private titleService: Title,
               private notificationService: NotificationService) {
   }
 
   public ngOnInit(): void {
-    this.remainingTime = this.calculateTimeDifference();
+    this.remainingTime = this.calculateDateToReach();
   }
 
   public start(): void {
@@ -74,33 +74,22 @@ export class TimerComponent implements OnInit {
     this.disableStartButton = false;
     this.disableStopButton = false;
 
-    this.remainingTime = this.calculateTimeDifference();
+    this.remainingTime = this.calculateDateToReach();
     this.titleService.setTitle(DEFAULT_TITLE);
   }
 
   private calculateDateToReach(): Date {
-    const result = new Date();
-    result.setMinutes(result.getMinutes() + this.getSelectedDuration(this.selectedTimerType));
-    return result;
+    const selectedDuration = this.getSelectedDuration(this.selectedTimerType);
+
+    const dateToReach = new Date();
+    const result = new Date(dateToReach);
+
+    dateToReach.setMinutes(result.getMinutes() + selectedDuration);
+
+    return new Date(dateToReach.getTime() - result.getTime());
   }
 
-  private calculateTimeDifference(): Date {
-    const dateToReach = this.calculateDateToReach();
-    return new Date(dateToReach.getTime() - new Date().getTime());
-  }
-
-  public selectTomato(): void {
-    this.selectedTimerType = TimerType.TOMATO;
-    this.reset();
-  }
-
-  public selectShortBreak(): void {
-    this.selectedTimerType = TimerType.SHORT_BREAK;
-    this.reset();
-  }
-
-  public selectLongBreak(): void {
-    this.selectedTimerType = TimerType.LONG_BREAK;
+  public onChangeSelection(): void {
     this.reset();
   }
 
