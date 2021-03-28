@@ -11,3 +11,14 @@ export function retrieveSettingsFromLocalStorage(): Setting {
   return settings === null ?
     new Setting() : settings;
 }
+
+export function playAudio(): void {
+  const audio = new Audio();
+  audio.src = '../assets/audio/audio.mp3';
+  audio.load();
+  audio.play();
+}
+
+export function isNullOrUndefined(object: any): boolean {
+  return object === null || object === undefined;
+}

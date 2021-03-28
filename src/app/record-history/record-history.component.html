@@ -11,7 +11,9 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Type</th>
-        <th scope="col" sortable="endDate">End date</th>
+        <th scope="col" sortable="startDate">Start</th>
+        <th scope="col" sortable="endDate">End</th>
+        <th scope="col" >Remaining</th>
       </tr>
       </thead>
       <tbody>
@@ -20,7 +22,9 @@
         <td>
           {{ getTimerName(record.timerType) }}
         </td>
-        <td>{{ record.endDate | date:'long' }}</td>
+        <td>{{ record.startDate | date:'medium' }}</td>
+        <td>{{ record.endDate | date:'medium' }}</td>
+        <td>{{ record.remainingTime | date:'mm:ss' }}</td>
       </tr>
       </tbody>
     </table>

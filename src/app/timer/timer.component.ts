@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {interval, Subscription} from 'rxjs';
-import {retrieveSettingsFromLocalStorage, retrieveTimersFromLocalStorage} from '../Utils';
+import {isNullOrUndefined, playAudio, retrieveSettingsFromLocalStorage, retrieveTimersFromLocalStorage} from '../Utils';
 import {TimerType} from '../TimerType';
 import {Title} from '@angular/platform-browser';
 import {Record} from '../Record';
@@ -21,6 +21,9 @@ export class TimerComponent implements OnInit {
   public disableStopButton: boolean;
   public selectedTimerType = TimerType.TOMATO;
 
+  public records = (JSON.parse(localStorage.getItem('logs')) as Record[]) || [];
+  public currentRecord = new Record();
+
   constructor(private titleService: Title,
               private notificationService: NotificationService) {
   }
@@ -30,6 +33,13 @@ export class TimerComponent implements OnInit {
   }
 
   public start(): void {
+
+    if (isNullOrUndefined(this.currentRecord.startDate)) {
+      this.currentRecord.startDate = new Date();
+      this.currentRecord.timerType = this.selectedTimerType;
+      this.currentRecord.saveRequired = true;
+    }
+
     this.disableStartButton = true;
     this.disableStopButton = false;
     this.subscription = interval(ONE_SECOND).subscribe(n => {
@@ -43,25 +53,20 @@ export class TimerComponent implements OnInit {
       if (this.remainingTime.getMinutes() === 0 && this.remainingTime.getSeconds() === 0) {
         this.disableStopButton = true;
         this.subscription.unsubscribe();
-        this.playAudio();
-        this.addNewRecord();
+        playAudio();
+        this.saveCurrentRecord();
         this.notificationService.sendNotification('No more time', {body: 'Ehi! The timer is over!'});
       }
     });
   }
 
-  private addNewRecord(): void {
-    const record: Record = new Record(new Date(), this.selectedTimerType);
-    const records: Record[] = (JSON.parse(localStorage.getItem('logs')) as Record[]) || [];
-    records.push(record);
-    localStorage.setItem('logs', JSON.stringify(records));
-  }
+  private saveCurrentRecord(): void {
+    this.currentRecord.saveRequired = false;
+    this.currentRecord.endDate = new Date();
+    this.currentRecord.remainingTime = this.remainingTime;
 
-  private playAudio(): void {
-    const audio = new Audio();
-    audio.src = '../assets/audio/audio.mp3';
-    audio.load();
-    audio.play();
+    this.records.push(this.currentRecord);
+    localStorage.setItem('logs', JSON.stringify(this.records));
   }
 
   public pause(): void {
@@ -73,6 +78,12 @@ export class TimerComponent implements OnInit {
     this.subscription.unsubscribe();
     this.disableStartButton = false;
     this.disableStopButton = false;
+
+    if (this.currentRecord.saveRequired) {
+      this.saveCurrentRecord();
+    }
+
+    this.currentRecord = new Record();
 
     this.remainingTime = this.calculateDateToReach();
     this.titleService.setTitle(DEFAULT_TITLE);
