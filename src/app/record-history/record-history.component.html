@@ -9,7 +9,7 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th scope="col">#</th>
+        <th id="number_col" scope="col ">#</th>
         <th scope="col">Type</th>
         <th scope="col" sortable="startDate">Start</th>
         <th scope="col" sortable="endDate">End</th>
@@ -18,7 +18,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let record of records; index as i">
-        <th scope="row">{{ i + 1 }}</th>
+        <th id="number_row" scope="row">{{ i + 1 }}</th>
         <td>
           {{ getTimerName(record.timerType) }}
         </td>
