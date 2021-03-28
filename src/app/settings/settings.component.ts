@@ -36,7 +36,7 @@ export class SettingsComponent implements OnInit {
   }
 
   public open(content): void {
-    this.modalService.open(content, {size: 'lg', backdrop: 'static'}).result.then();
+    this.modalService.open(content, {size: 'lg', backdrop: 'static'}).result.then().catch(() => {});
   }
 
   public save(): void {

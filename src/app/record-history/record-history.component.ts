@@ -14,7 +14,7 @@ export class RecordHistoryComponent {
 
   public open(content): void {
     this.records = (JSON.parse(localStorage.getItem('logs')) as Record[]);
-    this.modalService.open(content, {size: 'lg'}).result.then();
+    this.modalService.open(content, {size: 'lg'}).result.then().catch(() => {});
   }
 
   public getTimerName(timerType: TimerType): string {

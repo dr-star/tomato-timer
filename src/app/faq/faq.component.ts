@@ -14,7 +14,7 @@ export class FaqComponent implements OnInit {
   }
 
   public open(content): void {
-    this.modalService.open(content, {size: 'lg'}).result.then();
+    this.modalService.open(content, {size: 'lg'}).result.then().catch(() => {});
   }
 
 
