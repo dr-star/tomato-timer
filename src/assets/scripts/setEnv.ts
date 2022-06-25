@@ -20,7 +20,8 @@ export const environment = {
    AWS_RUM_IDENTITY_POOL_ID: '${process.env.AWS_RUM_IDENTITY_POOL_ID}',
    AWS_RUM_APPLICATION_ID: '${process.env.AWS_RUM_APPLICATION_ID}',
    AWS_RUM_ENDPOINT: '${process.env.AWS_RUM_ENDPOINT}',
-   AWS_RUM_REGION: '${process.env.AWS_RUM_REGION}'
+   AWS_RUM_REGION: '${process.env.AWS_RUM_REGION}',
+   APP_VERSION: '${process.env.npm_package_version}'
 };
 `;
 // write the content to the respective file
