@@ -43,12 +43,12 @@ export class TimerComponent implements OnInit {
     this.disableStartButton = true;
     this.disableStopButton = false;
     this.subscription = interval(ONE_SECOND).subscribe(n => {
+      this.remainingTime.setSeconds(this.remainingTime.getSeconds() - 1);
+      this.remainingTime = new Date(this.remainingTime.getTime());
+
       if (retrieveSettingsFromLocalStorage().showTimerInTitle) {
         this.titleService.setTitle('(' + this.remainingTime.getMinutes() + ':' + this.remainingTime.getSeconds() + ') ' + DEFAULT_TITLE);
       }
-
-      this.remainingTime.setSeconds(this.remainingTime.getSeconds() - 1);
-      this.remainingTime = new Date(this.remainingTime.getTime());
 
       if (this.remainingTime.getMinutes() === 0 && this.remainingTime.getSeconds() === 0) {
         this.disableStopButton = true;
