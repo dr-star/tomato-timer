@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TimerComponent } from './timer/timer.component';
 import { FaqComponent } from './faq/faq.component';
 import { RecordHistoryComponent } from './record-history/record-history.component';
+import {NgxGoogleAnalyticsModule} from 'ngx-google-analytics';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RecordHistoryComponent } from './record-history/record-history.componen
         BrowserModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
         NgbModule,
+        NgxGoogleAnalyticsModule.forRoot(environment.GOOGLE_ANALYTICS_TRACKING_CODE),
         ReactiveFormsModule,
         FormsModule
     ],

@@ -21,7 +21,8 @@ export const environment = {
    AWS_RUM_APPLICATION_ID: '${process.env.AWS_RUM_APPLICATION_ID}',
    AWS_RUM_ENDPOINT: '${process.env.AWS_RUM_ENDPOINT}',
    AWS_RUM_REGION: '${process.env.AWS_RUM_REGION}',
-   APP_VERSION: '${process.env.npm_package_version}'
+   APP_VERSION: '${process.env.npm_package_version}',
+   GOOGLE_ANALYTICS_TRACKING_CODE: '${process.env.GOOGLE_ANALYTICS_TRACKING_CODE}'
 };
 `;
 // write the content to the respective file
