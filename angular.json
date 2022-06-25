@@ -30,7 +30,8 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["@aws-crypto/sha256-js"]
           },
           "configurations": {
             "production": {

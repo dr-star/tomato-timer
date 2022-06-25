@@ -1,23 +1,23 @@
 <div class="d-flex btn-group btn-group-toggle" ngbRadioGroup name="selectedTimerType" [(ngModel)]="selectedTimerType"
      (ngModelChange)="onChangeSelection()">
   <label ngbButtonLabel class="btn btn-primary">
-    <input ngbButton type="radio" [value]="0"> Tomato
+    <input ngbButton class="btn-check" type="radio" [value]="0"> Tomato
   </label>
   <label ngbButtonLabel class="btn btn-primary">
-    <input ngbButton type="radio" [value]="1"> Short break
+    <input ngbButton class="btn-check" type="radio" [value]="1"> Short break
   </label>
   <label ngbButtonLabel class="btn btn-primary">
-    <input ngbButton type="radio" [value]="2"> Long break
+    <input ngbButton class="btn-check" type="radio" [value]="2"> Long break
   </label>
 </div>
 
-<h1 id="timer-title" class="mt-5 text-center fs-1 fw-bold">{{remainingTime | date: "m:ss"}}</h1>
+<h1 id="timer-title" class="mt-5 text-center fw-bold">{{remainingTime | date: "m:ss"}}</h1>
 
 <div id="buttons-container" class="d-flex bd-highlight justify-content-center mt-5">
-  <button type="button" class="btn btn-outline-success mr-3" (click)="start()" [disabled]="disableStartButton">Start
+  <button type="button" class="btn btn-outline-success" (click)="start()" [disabled]="disableStartButton">Start
   </button>
-  <button id="middle-button" type="button" class="btn btn-outline-danger mr-3" (click)="pause()"
+  <button id="middle-button" type="button" class="btn btn-outline-danger ms-3 me-3" (click)="pause()"
           [disabled]="disableStopButton">Stop
   </button>
-  <button type="button" class="btn btn-outline-dark mr-3" (click)="reset()">Reset</button>
+  <button type="button" class="btn btn-outline-dark" (click)="reset()">Reset</button>
 </div>
