@@ -48,9 +48,6 @@ Please access TimerTomato using the URL:
 # 🔥 Features
 `TimerTomato` comes with a bundle of features already. You can do the followings with it,
 
-## 🔢 Listing Shapes
-- List out shapes for you to pick and use.
-
 ## 📱 Responsive and mobile-friendly
 - Use `TimerTomato` seamlessly from any device.
 
