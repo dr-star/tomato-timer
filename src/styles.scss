@@ -1,9 +1,25 @@
-// Option 1
-//
-// Import all of Bootstrap's CSS
-@import '~bootstrap/scss/bootstrap';
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
-//
-// Option 2
-//
-// Import just the styles you need. Note that some stylesheets are required no matter what.
+// Import required Bootstrap's CSS
+
+// Configuration
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/utilities';
+// Layout & components
+@import '~bootstrap/scss/root';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/containers';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/navbar';
+@import '~bootstrap/scss/card';
+@import '~bootstrap/scss/modal';
+@import '~bootstrap/scss/button-group';
+@import '~bootstrap/scss/forms';
+// Helpers
+@import '~bootstrap/scss/helpers';
+// Utilities
+@import '~bootstrap/scss/utilities/api';
+
+@import '~bootstrap-icons/font/bootstrap-icons';
