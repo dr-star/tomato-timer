@@ -14,10 +14,7 @@
 <h1 id="timer-title" class="mt-5 text-center fw-bold">{{remainingTime | date: "m:ss"}}</h1>
 
 <div id="buttons-container" class="d-flex bd-highlight justify-content-center mt-5">
-  <button type="button" class="btn btn-outline-success" (click)="start()" [disabled]="disableStartButton">Start
-  </button>
-  <button id="middle-button" type="button" class="btn btn-outline-danger ms-3 me-3" (click)="pause()"
-          [disabled]="disableStopButton">Stop
+  <button type="button" class="btn me-3" [ngClass]="disableStartButton ? 'btn-outline-danger' : 'btn-outline-success'" (click)="disableStartButton ? pause() : start()">{{disableStartButton ? "Stop" : "Start"}}
   </button>
   <button type="button" class="btn btn-outline-dark" (click)="reset()">Reset</button>
 </div>
