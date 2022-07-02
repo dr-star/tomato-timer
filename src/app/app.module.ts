@@ -12,6 +12,7 @@ import { TimerComponent } from './timer/timer.component';
 import { FaqComponent } from './faq/faq.component';
 import { RecordHistoryComponent } from './record-history/record-history.component';
 import {NgxGoogleAnalyticsModule} from 'ngx-google-analytics';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {NgxGoogleAnalyticsModule} from 'ngx-google-analytics';
     SettingsComponent,
     TimerComponent,
     FaqComponent,
-    RecordHistoryComponent
+    RecordHistoryComponent,
+    InfoComponent
   ],
     imports: [
         BrowserModule,
