@@ -1,5 +1,5 @@
 <div class="d-flex btn-group btn-group-toggle" ngbRadioGroup name="selectedTimerType" [(ngModel)]="selectedTimerType"
-     (ngModelChange)="onChangeSelection()">
+     (ngModelChange)="onChangeSelection(); autostartIfRequired()">
   <label ngbButtonLabel class="btn btn-primary">
     <input ngbButton class="btn-check" type="radio" [value]="0"> Tomato
   </label>

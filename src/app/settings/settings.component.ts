@@ -27,6 +27,7 @@ export class SettingsComponent implements OnInit {
     const timerSettings = settings.timer;
     this.settings = this.fb.group({
       showTimerInTitle: settings.showTimerInTitle,
+      autostartBreaks: settings.autostartBreaks,
       timers: this.fb.group({
         tomato: [timerSettings.tomato, [Validators.required, Validators.min(1), Validators.max(59)]],
         shortBreak: [timerSettings.shortBreak, [Validators.required, Validators.min(1), Validators.max(59)]],
@@ -48,6 +49,7 @@ export class SettingsComponent implements OnInit {
       const settings = new Setting();
       settings.timer = timer;
       settings.showTimerInTitle = this.settings.get('showTimerInTitle').value;
+      settings.autostartBreaks = this.settings.get('autostartBreaks').value;
 
       localStorage.setItem('settings', JSON.stringify(settings));
       this.timerDurationChanged.emit();

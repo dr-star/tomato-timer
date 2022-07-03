@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {interval, Subscription} from 'rxjs';
 import {isNullOrUndefined, playAudio, retrieveSettingsFromLocalStorage, retrieveTimersFromLocalStorage} from '../Utils';
-import {TimerType} from '../TimerType';
+import {isBreak, TimerType} from '../TimerType';
 import {Title} from '@angular/platform-browser';
 import {Record} from '../Record';
 import {NotificationService} from '../notification.service';
@@ -118,6 +118,16 @@ export class TimerComponent implements OnInit {
         result = timer.longBreak;
     }
     return result;
+  }
+
+  public autostartIfRequired(): void {
+    if (this.isAutostartRequired()) {
+      this.start();
+    }
+  }
+
+  private isAutostartRequired(): boolean {
+    return isBreak(this.selectedTimerType) && retrieveSettingsFromLocalStorage().autostartBreaks;
   }
 
 }

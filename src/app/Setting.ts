@@ -7,6 +7,7 @@ export const LONG_BREAK_DURATION = 10;
 export class Setting {
   timer: Timer;
   showTimerInTitle: boolean;
+  autostartBreaks: boolean;
 
   constructor() {
     this.timer = new Timer(TOMATO_DURATION, SHORT_BREAK_DURATION, LONG_BREAK_DURATION);
