@@ -23,12 +23,14 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
+              "src/apple-touch-icon.png",
               "src/favicon-16x16.png",
               "src/favicon-32x32.png",
               "src/robots.txt",
               "src/sitemap.xml",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/browserconfig.xml"
             ],
             "styles": [
               "src/styles.scss"
