@@ -1,5 +1,8 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import { By } from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
+
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -22,10 +25,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('tomato-timer');
   });
 
-  it('should render title', () => {
+  it('should find the <a> identified with id "lnkGithub" with the Github link', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('tomato-timer app is running!');
+    const debugElement: DebugElement = fixture.debugElement;
+    const aDebug = debugElement.query(By.css('#lnkGithub'));
+    const aHTMLElement: HTMLElement = aDebug.nativeElement;
+    expect(aHTMLElement.getAttribute('href')).toEqual('https://github.com/dr-star/tomato-timer');
   });
 });

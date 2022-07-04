@@ -51,8 +51,8 @@
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" [disabled]="settings.invalid" (click)="save(); modal.dismiss()">Save</button>
+    <button id="btnSave" type="button" class="btn btn-outline-dark" [disabled]="settings.invalid" (click)="save(); modal.dismiss()">Save</button>
   </div>
 </ng-template>
 
-<i class="bi-gear text-white fs-4" data-bs-toggle="modal" (click)="open(content)"></i>
+<i class="bi-gear text-white fs-4" data-bs-toggle="modal" (click)="open()"></i>

@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SettingsComponent } from './settings.component';
+import {SettingsComponent} from './settings.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -8,9 +10,10 @@ describe('SettingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingsComponent ]
+      imports: [ReactiveFormsModule, NgbModalModule],
+      declarations: [SettingsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

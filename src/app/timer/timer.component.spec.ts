@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimerComponent } from './timer.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../../environments/environment';
 
 describe('TimerComponent', () => {
   let component: TimerComponent;
@@ -8,6 +10,7 @@ describe('TimerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})],
       declarations: [ TimerComponent ]
     })
     .compileComponents();

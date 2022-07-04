@@ -14,6 +14,7 @@ import {environment} from '../../environments/environment';
 })
 export class SettingsComponent implements OnInit {
   @Output() timerDurationChanged = new EventEmitter<void>();
+  @ViewChild('content') modalRef: TemplateRef<any>;
 
   public version: string = environment.APP_VERSION;
 
@@ -36,8 +37,8 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  public open(content): void {
-    this.modalService.open(content, {size: 'lg', backdrop: 'static'}).result.then().catch(() => {});
+  public open(): void {
+    this.modalService.open(this.modalRef, {size: 'lg', backdrop: 'static'}).result.then().catch(() => {});
   }
 
   public save(): void {
