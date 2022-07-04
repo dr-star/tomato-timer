@@ -8,20 +8,8 @@
   "start_url": "./",
   "icons": [
     {
-      "src": "assets/icons/icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "assets/icons/icon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "assets/icons/icon-128x128.png",
-      "sizes": "128x128",
+      "src": "assets/icons/icon-70x70.png",
+      "sizes": "70x70",
       "type": "image/png",
       "purpose": "maskable any"
     },
@@ -32,8 +20,8 @@
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-152x152.png",
-      "sizes": "152x152",
+      "src": "assets/icons/icon-150x150.png",
+      "sizes": "150x150",
       "type": "image/png",
       "purpose": "maskable any"
     },
@@ -44,8 +32,8 @@
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-384x384.png",
-      "sizes": "384x384",
+      "src": "assets/icons/icon-310x310.png",
+      "sizes": "310x310",
       "type": "image/png",
       "purpose": "maskable any"
     },
